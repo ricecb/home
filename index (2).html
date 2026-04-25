@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reece CB</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Unbounded:wght@900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050508;
+      --card: #0f0f17;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent1: #a855f7;
+      --accent2: #ef4444;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(168,85,247,0.15), transparent 40%),
+                  radial-gradient(circle at 80% 80%, rgba(239,68,68,0.15), transparent 40%),
+                  var(--bg);
+      color: var(--text);
+      scroll-behavior: smooth;
+    }
+
+    header {
+      padding: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 3rem 1.2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    h2 { font-size: 1.6rem; }
+
+    p {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .hero {
+      text-align: center;
+      padding-top: 5rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .photo {
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    .photo:hover { transform: scale(1.04); }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .projects {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      padding: 1.2rem;
+      border-radius: 12px;
+    }
+
+    .coming { text-align: center; opacity: 0.6; }
+
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 70vh;
+      border-radius: 12px;
+    }
+
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 2rem 1rem;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    footer p { margin: 0.4rem 0; }
+
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      header { flex-direction: column; gap: 0.5rem; }
+      nav a { margin: 0 0.5rem; }
+    }
+      nav a { margin: 0 0.5rem; }
+      .photo { min-width: 70%; max-width: 240px; }
+    }
+      nav a { margin: 0 0.5rem; }
+      .photo { min-width: 85%; }
+    }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div>Reece CB</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#photos">Photos</a>
+    <a href="#projects">Work</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Reece CB</h1>
+  <p>Photography & visual work</p>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>I focus on photography and visual work, capturing clean compositions, lighting, and atmosphere. My work explores urban spaces, cinema environments, and visual detail.</p>
+  <p>I also have a strong interest in Nintendo and visual media.</p>
+</section>
+
+<section id="photos">
+  <h2>Photos</h2>
+  <div class="gallery" id="gallery">
+    <div class="photo" onclick="openLightbox(this)" data-title="City Night" data-desc="Urban night photography with neon tones.">
+      <img src="https://picsum.photos/600/800?1">
+    </div>
+    <div class="photo" onclick="openLightbox(this)" data-title="Architecture" data-desc="Clean geometric structures.">
+      <img src="https://picsum.photos/600/800?2">
+    </div>
+    <div class="photo" onclick="openLightbox(this)" data-title="Street" data-desc="Moments captured in motion.">
+      <img src="https://picsum.photos/600/800?3">
+    </div>
+    <div class="photo" onclick="openLightbox(this)" data-title="Cinema" data-desc="Lighting and atmosphere in cinema spaces.">
+      <img src="https://picsum.photos/600/800?4">
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Work</h2>
+  <div class="projects">
+    <div class="project-card">
+      <strong>Photography Portfolio</strong>
+      <p>Collection of selected photography work.</p>
+    </div>
+    <div class="project-card">
+      <strong>Visual Experiments</strong>
+      <p>Exploring composition and lighting styles.</p>
+    </div>
+  </div>
+</section>
+
+<section class="coming">
+  <h2>Coming Soon</h2>
+  <p>More projects and work will appear here.</p>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img">
+  <h3 id="lightbox-title"></h3>
+  <p id="lightbox-desc"></p>
+</div>
+
+<footer>
+  <p><strong>Reece CB</strong></p>
+  <p>Photography and visual work.</p>
+  <p><a href="mailto:contact@reececb.com">contact@reececb.com</a></p>
+  <p>© 2026 Reece CB</p>
+</footer>
+
+<script>
+  function openLightbox(el) {
+    document.getElementById('lightbox').style.display = 'flex';
+    document.getElementById('lightbox-img').src = el.querySelector('img').src;
+    document.getElementById('lightbox-title').innerText = el.dataset.title;
+    document.getElementById('lightbox-desc').innerText = el.dataset.desc;
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+
+  
+</script>
+
+</body>
+</html>
